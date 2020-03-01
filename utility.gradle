@@ -1,0 +1,61 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+import java.text.SimpleDateFormat
+
+
+def getProjectParam(key, defaultValue) {
+    def returnVal
+    if(project.hasProperty(key)) {
+        returnVal = project.getProperties().get(key)
+    } else {
+        returnVal = defaultValue;
+    }
+
+    println  'Using value: ' + returnVal + ' for key: ' + key;
+    return returnVal;
+}
+
+def getIntegerParam(key, defaultValue) {
+    return Integer.valueOf(getProjectParam(key, defaultValue))
+}
+
+def getBooleanParam(key, defaultValue) {
+    return Boolean.valueOf(getProjectParam(key, defaultValue))
+}
+
+def getStringBuildConfig(key, defaultValue) {
+    return '"' + getProjectParam(key, defaultValue) + '"'
+}
+
+def gitSha() {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        return "NA"
+    } else {
+        return 'git rev-parse HEAD'.execute().text.trim()
+    }
+}
+
+def gitLog() {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        return "NA"
+    } else {
+        return 'git log --oneline -1'.execute().text.trim().replaceAll(/(["'])/, '\\\\$1' )
+    }
+}
+
+def buildTime() {
+    def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
+    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+    return df.format(new Date())
+}
+
+// Export methods by turning them into closures
+ext{
+    getProjectParam = this.&getProjectParam
+    getIntegerParam = this.&getIntegerParam
+    getBooleanParam = this.&getBooleanParam
+    getStringBuildConfig = this.&getStringBuildConfig
+    gitSha = this.&gitSha
+    gitLog = this.&gitLog
+    buildTime = this.&buildTime
+}
