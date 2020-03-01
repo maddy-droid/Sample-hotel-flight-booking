@@ -6,6 +6,7 @@ public class BaseModel {
 
     private HotelDetails hotelDetails;
 
+    private FlightDetails flightDetails;
 
     public int getType() {
         return type;
@@ -21,5 +22,13 @@ public class BaseModel {
 
     public void setHotelDetails(HotelDetails hotelDetails) {
         this.hotelDetails = hotelDetails;
+    }
+
+    public FlightDetails getFlightDetails() {
+        return flightDetails;
+    }
+
+    public void setFlightDetails(FlightDetails flightDetails) {
+        this.flightDetails = flightDetails;
     }
 }
