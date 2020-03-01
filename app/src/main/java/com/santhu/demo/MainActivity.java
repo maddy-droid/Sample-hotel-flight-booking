@@ -7,12 +7,16 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.santhu.demo.communicator.MyTransporter;
+import com.santhu.demo.communicator.TransporterCommunication;
+import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.utils.Constants;
 
 import java.util.Calendar;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MyTransporter.initialize();
         mSpinnerDep = (Spinner) findViewById(R.id.spinnerDep);
         mSpinnerDest = (Spinner) findViewById(R.id.spinnerDest);
 
