@@ -1,5 +1,6 @@
 package com.santhu.demo.communicator;
 
+import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.model.HotelDetails;
 import com.santhu.demo.utils.Constants;
@@ -70,11 +71,11 @@ public class MyTransporter {
         flightDetailsResponseCall.enqueue(new Callback<FlightDetails>() {
             @Override
             public void onResponse(Call<FlightDetails> call, Response<FlightDetails> response) {
-                FlightDetails flightDetails = response.body();
-                if (flightDetails != null){
+                BaseModel baseModel = response.body();
+                if (baseModel != null){
                     if (weakReference.get() != null){
-                        flightDetails.setType(Constants.MODEL_TYPE_FLIGHT);
-                        weakReference.get().onResponse(flightDetails);
+                        baseModel.setType(Constants.MODEL_TYPE_FLIGHT);
+                        weakReference.get().onResponse(baseModel);
                     }
                 }else{
                     // show the error Response ERROR code
