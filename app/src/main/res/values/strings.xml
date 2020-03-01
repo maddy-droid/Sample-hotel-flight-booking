@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">HAF (Hotel and Flight booking)</string>
+
+
+    <string name="destination">Destination Country</string>
+    <string name="departure">Departure</string>
+    <string name="country_prompt">Choose a country</string>
+
+
+    <string-array name="country_arrays">
+        <item>London</item>
+        <item>Tenerife</item>
+        <item>Tunisia</item>
+        <item>India</item>
+        <item>Mexico</item>
+        <item>Almagne</item>
+        <item>Italy</item>
+        <item>Korea</item>
+        <item>Switzerland</item>
+        <item>Tailand</item>
+        <item>Turkey</item>
+        <item>United Kingdom</item>
+        <item>Espagne</item>
+        <item>Canada</item>
+    </string-array>
+
 </resources>
