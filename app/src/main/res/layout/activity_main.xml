@@ -100,11 +100,10 @@
         android:layout_alignStart="@+id/dateStart" />
 
     <Button
-        android:text="Book it"
+        android:text="Search flights"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bBook"
-        android:onClick="Book_it"
         android:layout_centerInParent="true"
         android:layout_below="@id/dateAnd"
         android:layout_marginRight="18dp"

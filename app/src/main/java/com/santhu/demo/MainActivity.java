@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.santhu.demo.utils.Constants;
 
 import java.util.Calendar;
 
@@ -116,7 +119,17 @@ public class MainActivity extends AppCompatActivity {
                             });
                     builder1.show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Flight Booked !", Toast.LENGTH_LONG).show();
+
+                    // strings with delimter
+                    String data = mDeprature + "!"
+                    +mDeprature +"!"
+                    +DateDep +"!"
+                    +DateDest;
+
+                    Intent intent = new Intent(MainActivity.this, ShowFlightsActivity.class);
+                    intent.putExtra(Constants.EXTRA_FLIGHT_DETAILS, data);
+                    startActivity(intent);
+
                 }
 
             }
