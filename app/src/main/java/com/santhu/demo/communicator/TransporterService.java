@@ -9,6 +9,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.santhu.demo.BuildConfig;
+import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.model.HotelDetails;
 
 import java.lang.reflect.Type;
@@ -33,6 +34,10 @@ public interface TransporterService {
     @POST("raw/f0Tm6bfy")
     Call<HotelDetails> getHotelDetails();
 
+    @Headers("Content-Type: application/json")
+    @POST("raw/bFnZQEx0")
+    Call<FlightDetails> getFlightDetails();
+
     /********
      * Helper class that sets up a new services
      *******/
@@ -49,6 +54,7 @@ public interface TransporterService {
                     .excludeFieldsWithoutExposeAnnotation()
                     .setLenient()
                     .registerTypeAdapter(HotelDetailsDeserializer.class, new HotelDetailsDeserializer())
+                    .registerTypeAdapter(FlightDetailsDeserializer.class, new FlightDetailsDeserializer())
                     .create();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(baseUrl)
@@ -69,8 +75,19 @@ public interface TransporterService {
                 .create();
         @Override
         public HotelDetails deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-            HotelDetails botResponseWrapper = gson.fromJson(json, HotelDetails.class);
-            return botResponseWrapper;
+            HotelDetails hotelDetails = gson.fromJson(json, HotelDetails.class);
+            return hotelDetails;
+        }
+    }
+
+    public class FlightDetailsDeserializer implements JsonDeserializer<FlightDetails> {
+        static Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
+        @Override
+        public FlightDetails deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            FlightDetails flightDetails = gson.fromJson(json, FlightDetails.class);
+            return flightDetails;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.santhu.demo.communicator;
 
+import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.model.HotelDetails;
 import com.santhu.demo.utils.Constants;
 
@@ -59,10 +60,38 @@ public class MyTransporter {
                 }
             }
         });
-
-
     }
 
+
+    public void getFlightDetails(TransporterCommunication transporterCommunication) {
+        final WeakReference<TransporterCommunication> weakReference = new WeakReference<>(transporterCommunication);
+        Call<FlightDetails> flightDetailsResponseCall = mMyTransporterService.getFlightDetails();
+
+        flightDetailsResponseCall.enqueue(new Callback<FlightDetails>() {
+            @Override
+            public void onResponse(Call<FlightDetails> call, Response<FlightDetails> response) {
+                FlightDetails flightDetails = response.body();
+                if (flightDetails != null){
+                    if (weakReference.get() != null){
+                        flightDetails.setType(Constants.MODEL_TYPE_FLIGHT);
+                        weakReference.get().onResponse(flightDetails);
+                    }
+                }else{
+                    // show the error Response ERROR code
+                    if (weakReference.get() != null){
+                        weakReference.get().onError("Something went wrong!!!");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlightDetails> call, Throwable t) {
+                if (weakReference.get() != null){
+                    weakReference.get().onError(t.getMessage());
+                }
+            }
+        });
+    }
 
 
 
