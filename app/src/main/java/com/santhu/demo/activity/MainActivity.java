@@ -1,4 +1,4 @@
-package com.santhu.demo;
+package com.santhu.demo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,16 +7,13 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.santhu.demo.R;
 import com.santhu.demo.communicator.MyTransporter;
-import com.santhu.demo.communicator.TransporterCommunication;
-import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.utils.Constants;
 
 import java.util.Calendar;

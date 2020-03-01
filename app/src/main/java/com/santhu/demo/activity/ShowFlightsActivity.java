@@ -1,4 +1,4 @@
-package com.santhu.demo;
+package com.santhu.demo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.santhu.demo.R;
 import com.santhu.demo.adapter.FlightsAdapter;
 import com.santhu.demo.communicator.MyTransporter;
 import com.santhu.demo.communicator.TransporterCommunication;
@@ -18,8 +19,6 @@ import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.model.Flight;
 import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.utils.Constants;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
