@@ -17,6 +17,8 @@ import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
 
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsViewHolder>{
 
     private final ArrayList<HotelDetails> mHotelDetailsList;
@@ -40,11 +42,12 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         HotelDetails hotelDetails = mHotelDetailsList.get(position);
         holder.hotelNameTextView.setText(hotelDetails.getName());
         holder.hotelLocationTextView.setText(hotelDetails.getHotel_location());
-        //holder.hotelRatingView.setRating(Integer.parseInt(hotelDetails.getRating()));
+        holder.hotelRatingView.setRating(Integer.parseInt(hotelDetails.getRating()));
         HotelImageViewPagerAdapter hotelImageViewPagerAdapter = new HotelImageViewPagerAdapter(hotelDetails.getImages());
         holder.dotsIndicator.setViewPager(holder.hotelViewPager);
         holder.hotelViewPager.setAdapter(hotelImageViewPagerAdapter);
 
+        holder.hotelDescriptionTextView.setText(hotelDetails.getDescription());
 
 
     }
@@ -57,15 +60,14 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
     public class HotelsViewHolder extends RecyclerView.ViewHolder{
 
         TextView hotelNameTextView;
-        RatingBar hotelRatingView;
         TextView hotelLocationTextView;
         ViewPager hotelViewPager;
         DotsIndicator dotsIndicator;
 
-        TextView arrivalAirportTextView;
-        TextView airwaysTextView;
-        Button priceTextView;
-        TextView totalTravelTimeTextView;
+        TextView animitiesTextView;
+        TextView hotelDescriptionTextView;
+        MaterialRatingBar hotelRatingView;
+
         View itemViewMain;
 
 
@@ -74,18 +76,15 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
             super(itemView);
             itemViewMain = itemView;
             hotelNameTextView =itemView.findViewById(R.id.hotel_name_tv);
-          //  hotelRatingView =itemView.findViewById(R.id.hotel_rating);
             hotelLocationTextView =itemView.findViewById(R.id.hotel_location_tv);
 
             hotelViewPager = itemView.findViewById(R.id.hotel_view_pager);
             dotsIndicator = (DotsIndicator) itemView.findViewById(R.id.dots_indicator);
 
-            arrivalAirportTextView =itemView.findViewById(R.id.arrival_airport_name_tv);
+            animitiesTextView =itemView.findViewById(R.id.hotel_aminities_text_view);
+            hotelDescriptionTextView =itemView.findViewById(R.id.hotel_description_text_view);
+            hotelRatingView =itemView.findViewById(R.id.hotel_rating_views);
 
-            airwaysTextView =itemView.findViewById(R.id.airway_name_tv);
-            priceTextView =itemView.findViewById(R.id.price_name_tv);
-
-            totalTravelTimeTextView =itemView.findViewById(R.id.total_travel_time);
 
         }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="350dp"
     android:layout_marginTop="2dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -19,49 +19,50 @@
         android:layout_marginBottom="3dp"
         android:weightSum="1">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="vertical"
+            android:weightSum="1">
+            <TextView
+                android:id="@+id/hotel_name_tv"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="vertical"
-                android:weightSum="1">
-                <TextView
-                    android:id="@+id/hotel_name_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="left"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
-                </TextView>
+                android:layout_height="30dp"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+            </TextView>
 
-                <TextView
-                    android:id="@+id/hotel_location_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:gravity="left">
-                </TextView>
+            <TextView
+                android:id="@+id/hotel_location_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:gravity="left">
+            </TextView>
 
 
-            </LinearLayout>
+        </LinearLayout>
 
 
 
-            <!--<RatingBar
-                android:id="@+id/hotel_rating"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:numStars="5"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:layout_gravity="left"
-                android:background="@android:color/holo_orange_light">
-            </-->RatingBar>
+        <!--<RatingBar
+            android:id="@+id/hotel_rating"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:numStars="5"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_gravity="left"
+            android:background="@android:color/holo_orange_light">
+        </-->RatingBar>
 
 
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/hotel_view_pager"
@@ -86,7 +87,65 @@
                 app:selectedDotColor="#606060" />
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/hotel_aminities_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left">
+            </TextView>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Overview"
+                    android:textStyle="bold"
+                    android:gravity="left">
+                </TextView>
+                <TextView
+                    android:id="@+id/hotel_description_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/hotel_rating_views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                style="@style/Widget.MaterialRatingBar.RatingBar" />
+
+            <Button
+                android:id="@+id/hotel_select_button_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Select Hotel"
+                android:gravity="left">
+            </Button>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
