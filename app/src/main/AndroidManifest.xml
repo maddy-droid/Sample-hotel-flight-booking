@@ -21,6 +21,7 @@
 
         <activity android:name=".activity.ShowFlightsActivity"></activity>
         <activity android:name=".activity.ShowHotelsActivity"></activity>
+        <activity android:name=".activity.ConfirmationActivity"></activity>
     </application>
 
 </manifest>
