@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class DateUtils {
 
@@ -18,15 +19,40 @@ public class DateUtils {
 
 
     public static String getDate(String currentDate){
-        if (currentDate == null) {
-            return null;
-        }
         StringBuilder builder = new StringBuilder();
         try {
             DateFormat Iso8061Format = getDateFormatObject(DATE_TIME_FORMAT_YYYY_MM_DD_T_HH_MM_SS); //input format
             Date date = Iso8061Format.parse(currentDate);
             DateFormat resultFormat = getDateFormatObject(DATE_TIME_FORMAT_MMMM_DD_EEEE);
             builder.append(resultFormat.format(date));
+        }catch (ParseException e){
+            Log.e("HAF","unable to parse time date for weather");
+        }
+        return builder.toString();
+    }
+
+    public static String getTravelTime(String departureDate, String arrivalDate){
+
+        StringBuilder builder = new StringBuilder();
+        try {
+            DateFormat Iso8061Format = getDateFormatObject(DATE_TIME_FORMAT_YYYY_MM_DD_T_HH_MM_SS); //input format
+
+            Date departureDateformate = Iso8061Format.parse(departureDate);
+            Date arrivalDateformate = Iso8061Format.parse(arrivalDate);
+
+
+            long duration  = arrivalDateformate.getTime() - departureDateformate.getTime();
+
+            long diffInSeconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+            long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+            long diffInHours = TimeUnit.MILLISECONDS.toHours(duration);
+            long diffInDays = TimeUnit.MILLISECONDS.toDays(duration);
+
+            //builder.append("Days : "+diffInDays);
+            builder.append(diffInHours +"h" + " ");
+            builder.append(diffInMinutes+"m");
+            //builder.append("SS : "+diffInSeconds);
+
         }catch (ParseException e){
             Log.e("HAF","unable to parse time date for weather");
         }
