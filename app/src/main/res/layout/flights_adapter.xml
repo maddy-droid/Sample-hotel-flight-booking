@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     android:layout_marginTop="2dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -10,12 +10,16 @@
 
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.50"
+            android:layout_weight="0.40"
             android:orientation="horizontal">
 
             <TextView
@@ -38,7 +42,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.20"
             android:orientation="horizontal">
 
             <TextView
@@ -62,7 +66,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.20"
             android:orientation="horizontal">
 
             <TextView
@@ -72,8 +76,6 @@
                 android:layout_height="match_parent">
 
             </TextView>
-
-
 
             <TextView
                 android:id="@+id/arrival_airport_name_tv"
@@ -85,7 +87,28 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.20"
+        android:orientation="horizontal">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Travel Time : ">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/total_travel_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="">
+        </TextView>
+
+    </LinearLayout>
 
 
     </LinearLayout>

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.santhu.demo.R;
 import com.santhu.demo.model.Flight;
-import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -44,6 +43,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
         holder.airwaysTextView.setText(flight.getAirline());
         holder.priceTextView.setText(flight.getPrice());
 
+        holder.totalTravelTimeTextView.setText(DateUtils.getTravelTime(flight.getDeparture_date(), flight.getArrival_date()));
 
     }
 
@@ -67,6 +67,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
         TextView arrivalAirportTextView;
         TextView airwaysTextView;
         Button priceTextView;
+        TextView totalTravelTimeTextView;
 
 
 
@@ -81,6 +82,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
             airwaysTextView =itemView.findViewById(R.id.airway_name_tv);
            priceTextView =itemView.findViewById(R.id.price_name_tv);
 
+            totalTravelTimeTextView =itemView.findViewById(R.id.total_travel_time);
 
         }
 
