@@ -20,6 +20,7 @@
         </activity>
 
         <activity android:name=".activity.ShowFlightsActivity"></activity>
+        <activity android:name=".activity.ShowHotelsActivity"></activity>
     </application>
 
 </manifest>
