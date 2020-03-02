@@ -19,9 +19,11 @@ import java.util.ArrayList;
 public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsViewHolder>{
 
     private final ArrayList<Flight> mFlightList;
+    private final ClickListener mClickListner;
 
-    public FlightsAdapter(ArrayList<Flight> flightDetails) {
+    public FlightsAdapter(ArrayList<Flight> flightDetails, ClickListener clickListener) {
         mFlightList = flightDetails;
+        mClickListner = clickListener;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FlightsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FlightsViewHolder holder, final int position) {
 
         Flight flight = mFlightList.get(position);
         holder.departureDateTextView.setText(DateUtils.getDate(flight.getDeparture_date()));
@@ -45,6 +47,13 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
         holder.priceTextView.setText(DataMarshall.convertMoney(flight.getPrice(),""));
 
         holder.totalTravelTimeTextView.setText(DateUtils.getTravelTime(flight.getDeparture_date(), flight.getArrival_date()));
+
+        holder.itemViewMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListner.onClickedItem(mFlightList.get(position));
+            }
+        });
 
     }
 
@@ -69,11 +78,13 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
         TextView airwaysTextView;
         Button priceTextView;
         TextView totalTravelTimeTextView;
+        View itemViewMain;
 
 
 
         public FlightsViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemViewMain = itemView;
             departureDateTextView =itemView.findViewById(R.id.departure_date_name_tv);
             departureAirportTextView =itemView.findViewById(R.id.departure_airport_name_tv);
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.santhu.demo.R;
+import com.santhu.demo.adapter.ClickListener;
 import com.santhu.demo.adapter.FlightsAdapter;
 import com.santhu.demo.communicator.MyTransporter;
 import com.santhu.demo.communicator.TransporterCommunication;
@@ -19,24 +20,25 @@ import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.model.Flight;
 import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.utils.Constants;
+import com.santhu.demo.utils.DataMarshall;
 
 import java.util.ArrayList;
 
-public class ShowFlightsActivity extends AppCompatActivity implements TransporterCommunication {
+public class ShowFlightsActivity extends AppCompatActivity implements TransporterCommunication, ClickListener {
 
     private ProgressBar mProgressBar;
     private RecyclerView mRecyclerView;
     private FlightsAdapter mFlightsAdapter;
     private TextView mErrorTextview;
-
+    private String mPassengerDetails = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String fDetails = null;
+
         Intent intent = getIntent();
         if (intent != null){
-            fDetails = intent.getStringExtra(Constants.EXTRA_FLIGHT_DETAILS);
-            if (fDetails == null){
+            mPassengerDetails = intent.getStringExtra(Constants.EXTRA_PASSENGER_DETAILS);
+            if (mPassengerDetails == null){
                 finish();
                 return;
             }
@@ -89,7 +91,7 @@ public class ShowFlightsActivity extends AppCompatActivity implements Transporte
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // set Horizontal Orientation
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        mFlightsAdapter = new FlightsAdapter(flightDetails);
+        mFlightsAdapter = new FlightsAdapter(flightDetails, this);
         mRecyclerView.setAdapter(mFlightsAdapter);
 
     }
@@ -104,4 +106,15 @@ public class ShowFlightsActivity extends AppCompatActivity implements Transporte
 
     }
 
+    @Override
+    public void onClickedItem(final Flight flight) {
+
+        String flightData = DataMarshall.combineFlightData(flight);
+
+        Intent intent = new Intent(ShowFlightsActivity.this, ShowHotelsActivity.class);
+        intent.putExtra(Constants.EXTRA_PASSENGER_DETAILS, mPassengerDetails);
+        intent.putExtra(Constants.EXTRA_FLIGHT_DETAILS, flightData);
+        startActivity(intent);
+
+    }
 }
