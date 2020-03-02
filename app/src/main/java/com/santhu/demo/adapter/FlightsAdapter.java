@@ -3,6 +3,7 @@ package com.santhu.demo.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.santhu.demo.R;
 import com.santhu.demo.model.Flight;
 import com.santhu.demo.model.FlightDetails;
+import com.santhu.demo.utils.DateUtils;
 
 import java.util.ArrayList;
 
@@ -33,7 +35,15 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
     public void onBindViewHolder(@NonNull FlightsViewHolder holder, int position) {
 
         Flight flight = mFlightList.get(position);
-        holder.airLineNameTextView.setText(flight.getAirline());
+        holder.departureDateTextView.setText(DateUtils.getDate(flight.getDeparture_date()));
+        holder.departureAirportTextView.setText(flight.getDeparture_airport());
+
+        holder.arrivalDateTextView.setText(DateUtils.getDate(flight.getArrival_date()));
+        holder.arrivalAirportTextView.setText(flight.getArrival_airport());
+
+        holder.airwaysTextView.setText(flight.getAirline());
+        holder.priceTextView.setText(flight.getPrice());
+
 
     }
 
@@ -51,11 +61,27 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
 
     public class FlightsViewHolder extends RecyclerView.ViewHolder{
 
-        TextView airLineNameTextView;
+        TextView departureDateTextView;
+        TextView departureAirportTextView;
+        TextView arrivalDateTextView;
+        TextView arrivalAirportTextView;
+        TextView airwaysTextView;
+        Button priceTextView;
+
+
 
         public FlightsViewHolder(@NonNull View itemView) {
             super(itemView);
-            airLineNameTextView =itemView.findViewById(R.id.airline_name_tv);
+            departureDateTextView =itemView.findViewById(R.id.departure_date_name_tv);
+            departureAirportTextView =itemView.findViewById(R.id.departure_airport_name_tv);
+
+            arrivalDateTextView =itemView.findViewById(R.id.arrival_date_name_tv);
+            arrivalAirportTextView =itemView.findViewById(R.id.arrival_airport_name_tv);
+
+            airwaysTextView =itemView.findViewById(R.id.airway_name_tv);
+           priceTextView =itemView.findViewById(R.id.price_name_tv);
+
+
         }
 
 
