@@ -40,11 +40,11 @@ public class MyTransporter {
         hotelResponseCall.enqueue(new Callback<HotelDetails>() {
             @Override
             public void onResponse(Call<HotelDetails> call, Response<HotelDetails> response) {
-                HotelDetails hotelDetails = response.body();
-                if (hotelDetails != null){
+                BaseModel baseModel = response.body();
+                if (baseModel != null){
                     if (weakReference.get() != null){
-                        hotelDetails.setType(Constants.MODEL_TYPE_HOTEL);
-                        weakReference.get().onResponse(hotelDetails);
+                        baseModel.setType(Constants.MODEL_TYPE_HOTEL);
+                        weakReference.get().onResponse(baseModel);
                     }
                 }else{
                     // show the error Response ERROR code
