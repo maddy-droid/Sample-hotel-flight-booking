@@ -76,7 +76,6 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         ViewPager hotelViewPager;
         DotsIndicator dotsIndicator;
 
-        TextView animitiesTextView;
         TextView hotelDescriptionTextView;
         MaterialRatingBar hotelRatingView;
         Button selectHotelbutton;
@@ -94,7 +93,6 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
             hotelViewPager = itemView.findViewById(R.id.hotel_view_pager);
             dotsIndicator = (DotsIndicator) itemView.findViewById(R.id.dots_indicator);
 
-            animitiesTextView =itemView.findViewById(R.id.hotel_aminities_text_view);
             hotelDescriptionTextView =itemView.findViewById(R.id.hotel_description_text_view);
             hotelRatingView =itemView.findViewById(R.id.hotel_rating_views);
 
