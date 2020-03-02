@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import com.santhu.demo.R;
 import com.santhu.demo.communicator.MyTransporter;
 import com.santhu.demo.utils.Constants;
+import com.santhu.demo.utils.DataMarshall;
 
 import java.util.Calendar;
 
@@ -102,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
                 //DAtePicker
 
 
-                String DateDest = mEdittextFrom.getText().toString();
-                String DateDep = mEdittextTo.getText().toString();
+                String dateDest = mEdittextFrom.getText().toString();
+                String dateDep = mEdittextTo.getText().toString();
 
                 //test
-                if (mDeprature.length() == 0 || mDestination.length() == 0 || DateDep.length() == 0 || DateDest.length() == 0) {
+                if (mDeprature.length() == 0 || mDestination.length() == 0 || dateDep.length() == 0 || dateDest.length() == 0) {
                     //AlertDialog
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                     builder1.setMessage("Fill all the informations !");
@@ -123,13 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
                     // strings with delimter
-                    String data = mDeprature + "!"
-                    +mDeprature +"!"
-                    +DateDep +"!"
-                    +DateDest;
-
+                    String data = DataMarshall.combinePassengerData(mDeprature, mDestination,dateDep, dateDest);
                     Intent intent = new Intent(MainActivity.this, ShowFlightsActivity.class);
-                    intent.putExtra(Constants.EXTRA_FLIGHT_DETAILS, data);
+                    intent.putExtra(Constants.EXTRA_PASSENGER_DETAILS, data);
                     startActivity(intent);
 
                 }
