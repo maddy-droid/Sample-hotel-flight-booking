@@ -1,6 +1,7 @@
 package com.santhu.demo.utils;
 
 import com.santhu.demo.model.Flight;
+import com.santhu.demo.model.HotelDetails;
 
 public class DataMarshall {
 
@@ -39,7 +40,7 @@ public class DataMarshall {
         stringBuffer.append(flight.getArrival_date()+"!");
 
         stringBuffer.append(flight.getArrival_airport()+"!");
-        stringBuffer.append(flight.getPrice()+"!");
+        stringBuffer.append(flight.getPrice());
 
         return stringBuffer.toString();
     }
@@ -49,5 +50,19 @@ public class DataMarshall {
         return data;
     }
 
+
+    public static String combineHotelData(HotelDetails hotelDetails){
+        StringBuffer stringBuffer = new StringBuffer();
+
+        stringBuffer.append(hotelDetails.getName()+"!");
+        stringBuffer.append(hotelDetails.getDescription());
+
+        return stringBuffer.toString();
+    }
+
+    public static String[] splitHotelData(String hotelDetails){
+        String[] data = hotelDetails.split("!");
+        return data;
+    }
 
 }
