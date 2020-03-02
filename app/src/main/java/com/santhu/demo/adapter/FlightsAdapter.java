@@ -48,6 +48,12 @@ public class FlightsAdapter extends RecyclerView.Adapter<FlightsAdapter.FlightsV
 
         holder.totalTravelTimeTextView.setText(DateUtils.getTravelTime(flight.getDeparture_date(), flight.getArrival_date()));
 
+        holder.priceTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListner.onClickedItem(mFlightList.get(position));
+            }
+        });
         holder.itemViewMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
