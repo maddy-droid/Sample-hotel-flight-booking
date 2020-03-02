@@ -7,5 +7,6 @@ public class Constants {
 
     public static final String EXTRA_PASSENGER_DETAILS = "extra_passenger_details";
     public static final String EXTRA_FLIGHT_DETAILS = "extra_flight_details";
+    public static final String EXTRA_HOTEL_DETAILS = "extra_hotel_details";
 
 }

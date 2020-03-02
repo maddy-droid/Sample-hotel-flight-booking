@@ -22,6 +22,7 @@ import com.santhu.demo.model.Flight;
 import com.santhu.demo.model.FlightDetails;
 import com.santhu.demo.model.HotelDetails;
 import com.santhu.demo.utils.Constants;
+import com.santhu.demo.utils.DataMarshall;
 
 import java.util.ArrayList;
 
@@ -114,6 +115,21 @@ public class ShowHotelsActivity extends AppCompatActivity implements Transporter
 
     @Override
     public void onClickedItem(Flight flight) {
+
+    }
+
+    @Override
+    public void onClickedItem(HotelDetails hotelDetails) {
+
+        String hotelData = DataMarshall.combineHotelData(hotelDetails);
+
+        Intent intent = new Intent(ShowHotelsActivity.this, ConfirmationActivity.class);
+        intent.putExtra(Constants.EXTRA_PASSENGER_DETAILS, mPassengerDetails);
+        intent.putExtra(Constants.EXTRA_FLIGHT_DETAILS, mFlightDetails);
+        intent.putExtra(Constants.EXTRA_HOTEL_DETAILS, hotelData);
+
+        startActivity(intent);
+
 
     }
 }

@@ -39,7 +39,7 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
     @Override
     public void onBindViewHolder(@NonNull HotelsViewHolder holder, int position) {
 
-        HotelDetails hotelDetails = mHotelDetailsList.get(position);
+        final HotelDetails hotelDetails = mHotelDetailsList.get(position);
         holder.hotelNameTextView.setText(hotelDetails.getName());
         holder.hotelLocationTextView.setText(hotelDetails.getHotel_location());
         holder.hotelRatingView.setRating(Integer.parseInt(hotelDetails.getRating()));
@@ -48,6 +48,12 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         holder.hotelViewPager.setAdapter(hotelImageViewPagerAdapter);
 
         holder.hotelDescriptionTextView.setText(hotelDetails.getDescription());
+        holder.itemViewMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListner.onClickedItem(hotelDetails);
+            }
+        });
 
 
     }

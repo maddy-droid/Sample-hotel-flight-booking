@@ -19,6 +19,7 @@ import com.santhu.demo.communicator.TransporterCommunication;
 import com.santhu.demo.model.BaseModel;
 import com.santhu.demo.model.Flight;
 import com.santhu.demo.model.FlightDetails;
+import com.santhu.demo.model.HotelDetails;
 import com.santhu.demo.utils.Constants;
 import com.santhu.demo.utils.DataMarshall;
 
@@ -115,6 +116,11 @@ public class ShowFlightsActivity extends AppCompatActivity implements Transporte
         intent.putExtra(Constants.EXTRA_PASSENGER_DETAILS, mPassengerDetails);
         intent.putExtra(Constants.EXTRA_FLIGHT_DETAILS, flightData);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onClickedItem(HotelDetails hotelDetails) {
 
     }
 }
