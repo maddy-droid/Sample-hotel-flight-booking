@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="8dp">
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:weightSum="1">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/hotel_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/hotel_location_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="left">
+                </TextView>
+
+
+            </LinearLayout>
+
+
+
+            <!--<RatingBar
+                android:id="@+id/hotel_rating"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:numStars="5"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:layout_gravity="left"
+                android:background="@android:color/holo_orange_light">
+            </-->RatingBar>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.50">
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
