@@ -48,6 +48,12 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         holder.hotelViewPager.setAdapter(hotelImageViewPagerAdapter);
 
         holder.hotelDescriptionTextView.setText(hotelDetails.getDescription());
+        holder.selectHotelbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListner.onClickedItem(hotelDetails);
+            }
+        });
         holder.itemViewMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +79,7 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         TextView animitiesTextView;
         TextView hotelDescriptionTextView;
         MaterialRatingBar hotelRatingView;
+        Button selectHotelbutton;
 
         View itemViewMain;
 
@@ -91,6 +98,7 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
             hotelDescriptionTextView =itemView.findViewById(R.id.hotel_description_text_view);
             hotelRatingView =itemView.findViewById(R.id.hotel_rating_views);
 
+            selectHotelbutton = itemView.findViewById(R.id.hotel_select_button_view);
 
         }
 

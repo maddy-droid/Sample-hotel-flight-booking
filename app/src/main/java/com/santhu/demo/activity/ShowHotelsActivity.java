@@ -56,6 +56,7 @@ public class ShowHotelsActivity extends AppCompatActivity implements Transporter
         mErrorTextview = findViewById(R.id.error_state_tv);
         mRecyclerView = findViewById(R.id.flights_recycler_view);
 
+        showProgressBar();
         MyTransporter.getInstance().getHotelDetails(this);
 
     }
