@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.santhu.demo.R;
 import com.santhu.demo.model.HotelDetails;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,10 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         holder.hotelNameTextView.setText(hotelDetails.getName());
         holder.hotelLocationTextView.setText(hotelDetails.getHotel_location());
         //holder.hotelRatingView.setRating(Integer.parseInt(hotelDetails.getRating()));
+        HotelImageViewPagerAdapter hotelImageViewPagerAdapter = new HotelImageViewPagerAdapter(hotelDetails.getImages());
+        holder.dotsIndicator.setViewPager(holder.hotelViewPager);
+        holder.hotelViewPager.setAdapter(hotelImageViewPagerAdapter);
+
 
 
     }
@@ -53,6 +59,8 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
         TextView hotelNameTextView;
         RatingBar hotelRatingView;
         TextView hotelLocationTextView;
+        ViewPager hotelViewPager;
+        DotsIndicator dotsIndicator;
 
         TextView arrivalAirportTextView;
         TextView airwaysTextView;
@@ -68,6 +76,9 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelsAdapter.HotelsView
             hotelNameTextView =itemView.findViewById(R.id.hotel_name_tv);
           //  hotelRatingView =itemView.findViewById(R.id.hotel_rating);
             hotelLocationTextView =itemView.findViewById(R.id.hotel_location_tv);
+
+            hotelViewPager = itemView.findViewById(R.id.hotel_view_pager);
+            dotsIndicator = (DotsIndicator) itemView.findViewById(R.id.dots_indicator);
 
             arrivalAirportTextView =itemView.findViewById(R.id.arrival_airport_name_tv);
 
