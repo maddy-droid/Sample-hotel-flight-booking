@@ -39,56 +39,33 @@ public class MainActivity extends AppCompatActivity {
 
         mEdittextFrom = (EditText) findViewById(R.id.dateStart);
         // perform click event on edit text
+
+        mEdittextFrom.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                showDateDialogForFrom();
+            }
+        });
+
         mEdittextFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-
-                // date picker dialog
-                mDatePickerDialogFrom = new DatePickerDialog(MainActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                // set day of month , month and year value in the edit text
-                                mEdittextFrom.setText(dayOfMonth + "-"
-                                        + (monthOfYear + 1) + "-" + year);
-
-                            }
-                        }, year, month, day);
-                mDatePickerDialogFrom.show();
+                showDateDialogForFrom();
             }
         });
 
         mEdittextTo = (EditText) findViewById(R.id.dateAnd);
         // perform click event on edit text
+        mEdittextTo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                showDateDialogForTo();
+            }
+        });
         mEdittextTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final Calendar c1 = Calendar.getInstance();
-                int year1 = c1.get(Calendar.YEAR);
-                int month1 = c1.get(Calendar.MONTH);
-                int day1 = c1.get(Calendar.DAY_OF_MONTH);
-                // date picker dialog
-                mDatePickerDialogTo = new DatePickerDialog(MainActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                // set day of month , month and year value in the edit text
-                                mEdittextTo.setText(dayOfMonth + "-"
-                                        + (monthOfYear + 1) + "-" + year);
-
-
-                            }
-                        }, year1, month1,day1);
-                mDatePickerDialogTo.show();
+                showDateDialogForTo();
             }
         });
 
@@ -135,4 +112,50 @@ public class MainActivity extends AppCompatActivity {
             });
 
     }
+
+    private void showDateDialogForFrom(){
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        // date picker dialog
+        mDatePickerDialogFrom = new DatePickerDialog(MainActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        // set day of month , month and year value in the edit text
+                        mEdittextFrom.setText(dayOfMonth + "-"
+                                + (monthOfYear + 1) + "-" + year);
+
+                    }
+                }, year, month, day);
+        mDatePickerDialogFrom.show();
+    }
+
+    private void showDateDialogForTo(){
+        final Calendar c1 = Calendar.getInstance();
+        int year1 = c1.get(Calendar.YEAR);
+        int month1 = c1.get(Calendar.MONTH);
+        int day1 = c1.get(Calendar.DAY_OF_MONTH);
+        // date picker dialog
+        mDatePickerDialogTo = new DatePickerDialog(MainActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        // set day of month , month and year value in the edit text
+                        mEdittextTo.setText(dayOfMonth + "-"
+                                + (monthOfYear + 1) + "-" + year);
+
+
+                    }
+                }, year1, month1,day1);
+        mDatePickerDialogTo.show();
+    }
+
 }
